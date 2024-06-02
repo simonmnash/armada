@@ -1,23 +1,27 @@
 [gd_scene load_steps=5 format=3 uid="uid://8vvkqmrl52x8"]
 
 [ext_resource type="Script" path="res://Character.gd" id="1_6e760"]
-[ext_resource type="Texture2D" uid="uid://dv88bqqwfh0de" path="res://godot.svg" id="2_whetk"]
+[ext_resource type="Texture2D" uid="uid://bcs7ofskkbawj" path="res://spaceships/bluebird128.png" id="2_f6x0o"]
 [ext_resource type="Script" path="res://addons/jam_launch/core/JamSync.gd" id="3_b70cf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5plvq"]
 size = Vector2(63, 63)
 
 [node name="Character" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_6e760")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_whetk")
+texture = ExtResource("2_f6x0o")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 shape = SubResource("RectangleShape2D_5plvq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -200)
+limit_left = -750
+limit_right = 750
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
@@ -58,3 +62,6 @@ vertical_alignment = 1
 script = ExtResource("3_b70cf")
 spawn_properties = Array[String](["position", "pid", "nametag"])
 sync_properties = Array[String](["position"])
+
+[node name="Guns" type="Node2D" parent="."]
+position = Vector2(0, -45)

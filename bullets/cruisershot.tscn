@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://befl47fsx46xl"]
+
+[ext_resource type="PackedScene" uid="uid://cdou0aman2tdx" path="res://bullets/bullet.tscn" id="1_ty3fb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e34fm"]
+radius = 20.0
+
+[node name="Bullet" instance=ExtResource("1_ty3fb")]
+linear_velocity = Vector2(1000, 0)
+
+[node name="Shot" parent="." index="0"]
+scale = Vector2(0.2, 0.2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_e34fm")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://deckt1wd147cd"]
+
+[ext_resource type="PackedScene" uid="uid://cdou0aman2tdx" path="res://bullets/bullet.tscn" id="1_er53p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fouha"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_msxop"]
+size = Vector2(18, 18)
+
+[node name="Bullet" instance=ExtResource("1_er53p")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_fouha")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("RectangleShape2D_msxop")

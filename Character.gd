@@ -2,8 +2,24 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
-
+const bullet_scene = preload("res://bullets/lasershot.tscn")
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+var speed = 10000
+var desired_movement := Vector2():
+	set(val):
+		if desired_movement == val:
+			return
+		desired_movement = val
+		if not multiplayer.has_multiplayer_peer():
+			return
+		if multiplayer.get_unique_id() == pid:
+			send_desired_movement.rpc_id(1, desired_movement)
+
+@rpc("any_peer")
+func send_desired_movement(m: Vector2):
+	if multiplayer.is_server() and multiplayer.get_remote_sender_id() == pid:
+		desired_movement = m
 
 var pid: int
 var nametag: String:
@@ -27,10 +43,6 @@ func set_playtime(pt: float):
 	playtime = pt
 
 var jump_requested: bool = false
-var x_movement: float = 0.0
-
-var last_x_input: float
-
 
 func _ready():
 	if multiplayer.get_unique_id() == pid:
@@ -49,11 +61,7 @@ func do_a_jump():
 		return
 	jump_requested = true
 	
-@rpc("any_peer")
-func set_x_movement(amount: float):
-	if multiplayer.get_remote_sender_id() != pid:
-		return
-	x_movement = clampf(amount, -1.0, 1.0)
+
 
 func _unhandled_input(event):
 	if multiplayer.get_unique_id() != pid:
@@ -71,32 +79,21 @@ func _process(delta):
 		if playtime_counter >= playtime_interval:
 			playtime += playtime_counter
 			playtime_counter = 0.0
-	
-	if multiplayer.get_unique_id() != pid:
-		return
-	var x_input = Input.get_axis("ui_left", "ui_right")
-	if x_input != last_x_input:
-		if multiplayer.is_server():
-			x_movement = clampf(x_input, -1.0, 1.0)
-		else:
-			set_x_movement.rpc_id(1, x_input)
-		last_x_input = x_input
+	if multiplayer.get_unique_id() == pid:
+		desired_movement = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+
+
 
 func _physics_process(delta):
 	if not multiplayer.is_server():
 		return
-		
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
-		
-	if jump_requested and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-	jump_requested = false
-	
-	if x_movement:
-		velocity.x = move_toward(velocity.x, x_movement * SPEED, SPEED * .8)
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED * .8)
+	velocity = (desired_movement + Vector2(0.0, -1.0)) * speed * delta
 
 	move_and_slide()
+
+
+	if jump_requested:
+		var b = bullet_scene.instantiate()
+		b.get_node("Area2D").add_to_group("player_shot")
+		$Guns.add_child(b)
+	jump_requested = false

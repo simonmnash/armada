@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://wsamqnibctdx"]
+
+[ext_resource type="Script" path="res://Background.gd" id="1_p2utf"]
+[ext_resource type="Texture2D" uid="uid://dv88bqqwfh0de" path="res://godot.svg" id="2_h3byl"]
+[ext_resource type="Script" path="res://addons/jam_launch/core/JamSync.gd" id="4_xshw6"]
+
+[node name="Background" type="Node2D"]
+script = ExtResource("1_p2utf")
+
+[node name="JamSync" type="Node" parent="."]
+script = ExtResource("4_xshw6")
+spawn_properties = Array[String](["position"])
+sync_properties = Array[String](["position"])
+
+[node name="Starscape" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.109804)
+position = Vector2(6, -436.5)
+scale = Vector2(15.0703, 25.4141)
+texture = ExtResource("2_h3byl")

@@ -77,12 +77,9 @@ func _on_jam_connect_player_verified(pid: int, pinfo):
 		
 	game_log_data.append("player '%s' joined at %s" % [player_name, Time.get_datetime_string_from_system(true)])
 	$Level1.spawn_player(pid, player_name, player_data)
+	$Level1.start_run()
 
 
-#
-# Demonstration of how the the GameFiles API can be used to persist large files
-# between sessions.
-#
 
 # Saves a contrived "game log" in response to the server shutting down
 func _on_jam_connect_server_shutting_down():

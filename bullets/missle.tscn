@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bf62lct1fdycg"]
+
+[ext_resource type="PackedScene" uid="uid://cdou0aman2tdx" path="res://bullets/bullet.tscn" id="1_yarqr"]
+[ext_resource type="Texture2D" uid="uid://ip686mvl2tjb" path="res://spaceships/simplemissle.png" id="2_8b4fo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2q3ea"]
+size = Vector2(36, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vo2sw"]
+size = Vector2(43, 23)
+
+[node name="Missle" instance=ExtResource("1_yarqr")]
+rotation = 1.5708
+linear_velocity = Vector2(0, 500)
+linear_damp_mode = 1
+
+[node name="Shot" parent="." index="0"]
+visible = false
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(-2.00001, 0.5)
+shape = SubResource("RectangleShape2D_2q3ea")
+
+[node name="JamSync" parent="." index="2"]
+spawn_properties = Array[String](["position", "linear_velocity"])
+sync_properties = Array[String](["position", "linear_velocity"])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(-2.50001, -0.500006)
+shape = SubResource("RectangleShape2D_vo2sw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="4"]
+position = Vector2(-0.75, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_8b4fo")
