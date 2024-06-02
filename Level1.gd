@@ -1,7 +1,6 @@
 extends Node2D
 
 var character_scn = preload("res://Character.tscn")
-const segment_scn = preload("res://segments/Segment.tscn")
 var started = false
 const eg_scene = preload("res://enemy/enemy.tscn")
 const cruiser_scene = preload("res://enemy/cruiser.tscn")
