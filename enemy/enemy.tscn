@@ -1,14 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://je4c233yym4y"]
+[gd_scene load_steps=4 format=3 uid="uid://je4c233yym4y"]
 
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_apom6"]
 [ext_resource type="Texture2D" uid="uid://dv88bqqwfh0de" path="res://godot.svg" id="1_i14uy"]
 [ext_resource type="Script" path="res://addons/jam_launch/core/JamSync.gd" id="3_spnbn"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7yi74"]
-size = Vector2(75, 75)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_itl3q"]
-radius = 1.0
 
 [node name="Enemy" type="RigidBody2D"]
 position = Vector2(0, -150)
@@ -27,18 +21,12 @@ texture = ExtResource("1_i14uy")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("RectangleShape2D_7yi74")
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
 
 [node name="Launcher" type="Node2D" parent="."]
 position = Vector2(0, 150)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_itl3q")
 
 [node name="JamSync" type="Node" parent="."]
 script = ExtResource("3_spnbn")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cs455x315f2xa"]
+
+[ext_resource type="PackedScene" uid="uid://je4c233yym4y" path="res://enemy/enemy.tscn" id="1_guj4f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vshu"]
+size = Vector2(83, 81)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fu7l"]
+size = Vector2(67, 65)
+
+[node name="Platform" instance=ExtResource("1_guj4f")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(-1.5, 1.5)
+shape = SubResource("RectangleShape2D_5vshu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_1fu7l")

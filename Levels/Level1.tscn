@@ -23,6 +23,9 @@ position = Vector2(-500, -500)
 [node name="Enemies2" type="Node2D" parent="."]
 position = Vector2(200, -1200)
 
+[node name="Enemies3" type="Node2D" parent="."]
+position = Vector2(200, -3000)
+
 [node name="LeftEdge" type="Node2D" parent="."]
 position = Vector2(-750, 0)
 
@@ -30,4 +33,7 @@ position = Vector2(-750, 0)
 position = Vector2(750, 0)
 
 [node name="Cruiser" type="Node2D" parent="."]
-position = Vector2(0, 1000)
+position = Vector2(250, -500)
+
+[node name="Cruiser2" type="Node2D" parent="."]
+position = Vector2(0, 500)

@@ -2,7 +2,7 @@ extends Node2D
 
 var character_scn = preload("res://Character.tscn")
 var started = false
-const eg_scene = preload("res://enemy/enemy.tscn")
+const eg_scene = preload("res://enemy/platform.tscn")
 const cruiser_scene = preload("res://enemy/cruiser.tscn")
 var rng = RandomNumberGenerator.new()
 func spawn_player(pid: int, nametag: String, player_data):
@@ -29,20 +29,20 @@ func start_run():
 	if not started:
 		add_enemy()
 		started = true
-		
+
+func add_enemy_group(center):
+	for i in [-800.0, -500.0, -200.0, 0.0, 200.0, 500.0]:
+		for j in [-1000, -500, 0, 500, 1000]:
+			var e = eg_scene.instantiate()
+			e.position = Vector2(i+rng.randf_range(-50.0, 50.0), i+j+rng.randf_range(-50, 50))
+			center.add_child(e)
+
 func add_enemy():
 	if multiplayer.is_server():
-		var c = cruiser_scene.instantiate()
-		c.position = $Cruiser.position
-		$Enemies.add_child(c)
-		for i in [-800.0, -500.0, -200.0, 0.0, 200.0, 500.0]:
-			for j in [-1000, -500, 0, 500, 1000]:
-				var e = eg_scene.instantiate()
-				e.position = Vector2(i+rng.randf_range(-50.0, 50.0), i+j+rng.randf_range(-50, 50))
-				$Enemies.add_child(e)
+		for cruiser_spawn in [$Cruiser, $Cruiser2]:
+			var c = cruiser_scene.instantiate()
+			c.position = cruiser_spawn.position
+			$Enemies.add_child(c)
 		
-		for i in [-800.0, -500.0, -200.0, 0.0, 200.0, 500.0]:
-			for j in [-1000, -500, 0, 500, 1000]:
-				var e = eg_scene.instantiate()
-				e.position = Vector2(i+rng.randf_range(-50.0, 50.0), i+j+rng.randf_range(-50, 50))
-				$Enemies2.add_child(e)
+		add_enemy_group($Enemies)
+
