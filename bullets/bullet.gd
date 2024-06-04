@@ -16,6 +16,8 @@ func _process(delta):
 func _on_area_2d_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	if multiplayer.is_server():
 		call_deferred("queue_free")
+		if area.is_in_group("player_hitbox"):
+			area.get_parent().take_damage(1)
 
 
 func _on_lifespan_timeout():

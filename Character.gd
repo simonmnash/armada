@@ -5,6 +5,11 @@ const JUMP_VELOCITY = -600.0
 const bullet_scene = preload("res://bullets/lasershot.tscn")
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+@export var health = 3:
+	set(val):
+		health = val
+		$Health.value = val
+
 var speed = 10000
 var desired_movement := Vector2():
 	set(val):
@@ -14,6 +19,8 @@ var desired_movement := Vector2():
 		if not multiplayer.has_multiplayer_peer():
 			return
 		if multiplayer.get_unique_id() == pid:
+			#var img := get_viewport().get_texture().get_image()
+			#img.save_png("user://test.png")
 			send_desired_movement.rpc_id(1, desired_movement)
 
 @rpc("any_peer")
@@ -97,3 +104,9 @@ func _physics_process(delta):
 		b.get_node("Area2D").add_to_group("player_shot")
 		$Guns.add_child(b)
 	jump_requested = false
+
+func take_damage(damage):
+	if multiplayer.is_server():
+		self.health -= damage
+		if self.health < 1:
+			self.get_parent().get_parent().remove_player(self.pid)
