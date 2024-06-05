@@ -16,7 +16,6 @@ var save_idx: int = 0
 
 func _ready():
 	console.jam_connect = jc
-	hud_menu.get_popup().id_pressed.connect(_on_menu_selection)
 
 func _process(delta):
 	if not jc.server or jc.server.dev_mode:
@@ -73,7 +72,7 @@ func _on_jam_connect_player_verified(pid: int, pinfo):
 	var player_data = null
 	if jc.server:
 		player_data = jc.server.db.get_game_data(player_db_key)
-		jc.notify_players.rpc_id(pid, "Log from previous game:\n%s" % prev_log_text)
+		#jc.notify_players.rpc_id(pid, "Log from previous game:\n%s" % prev_log_text)
 		
 	game_log_data.append("player '%s' joined at %s" % [player_name, Time.get_datetime_string_from_system(true)])
 	$Level1.spawn_player(pid, player_name, player_data)
