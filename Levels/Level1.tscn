@@ -1,12 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbyjjq47i081w"]
+[gd_scene load_steps=4 format=3 uid="uid://cbyjjq47i081w"]
 
 [ext_resource type="Script" path="res://Levels/Level1.gd" id="1_bfqtw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_atap4"]
+size = Vector2(3000, 20)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6onwd"]
+size = Vector2(3000, 50)
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_bfqtw")
 
 [node name="Players" type="Node2D" parent="."]
-position = Vector2(0, 500)
+position = Vector2(0, 1000)
 
 [node name="SpawnPoints" type="Node2D" parent="."]
 position = Vector2(0, 1500)
@@ -15,7 +21,17 @@ position = Vector2(0, 1500)
 position = Vector2(0, 699)
 
 [node name="EndLevel" type="Node2D" parent="."]
-position = Vector2(0, -2000)
+position = Vector2(0, -5000)
+
+[node name="Victory" type="Area2D" parent="EndLevel"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="Victory" type="CollisionShape2D" parent="EndLevel/Victory"]
+shape = SubResource("RectangleShape2D_atap4")
+
+[node name="Sprite2D" type="Sprite2D" parent="EndLevel"]
+texture = SubResource("PlaceholderTexture2D_6onwd")
 
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2(-500, -500)

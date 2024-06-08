@@ -95,7 +95,6 @@ func _physics_process(delta):
 	if not multiplayer.is_server():
 		return
 	velocity = (desired_movement + Vector2(0.0, -1.0)) * speed * delta
-
 	move_and_slide()
 
 

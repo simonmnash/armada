@@ -30,8 +30,8 @@ func start_run():
 		add_enemy()
 		started = true
 
-func add_enemy_group(center):
-	for i in [-800.0, -500.0, -200.0, 0.0, 200.0, 500.0]:
+func add_enemy_group(center,  i_group = [-800.0, -500.0, -200.0, 0.0, 200.0, 500.0]):
+	for i in i_group:
 		for j in [-1000, -500, 0, 500, 1000]:
 			var e = eg_scene.instantiate()
 			e.position = Vector2(i+rng.randf_range(-50.0, 50.0), i+j+rng.randf_range(-50, 50))
@@ -44,5 +44,7 @@ func add_enemy():
 			c.position = cruiser_spawn.position
 			$Enemies.add_child(c)
 		
-		add_enemy_group($Enemies)
+		add_enemy_group($Enemies,  [-800.0, -500.0, -200.0, 0.0, 500.0])
+		add_enemy_group($Enemies2)
+		add_enemy_group($Enemies3,  [-800.0, -500.0, -200.0, 0.0, 200.0, 500.0, 800.0])
 

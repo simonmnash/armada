@@ -65,6 +65,9 @@ func _on_jam_connect_player_disconnected(pid: int, pinfo):
 	game_log_data.append("player '%s' left at %s" % [pinfo.get("name", "<>"), Time.get_datetime_string_from_system(true)])
 	$Level1.remove_player(pid)
 
+func _on_player_hit(pid: int, pinfo):
+	game_log_data.append("player '%s' was hit  %s" % [pinfo.get("name", "<>"), Time.get_datetime_string_from_system(true)])
+
 func _on_jam_connect_player_verified(pid: int, pinfo):
 	var player_name = pinfo.get("name", "<>")
 	var player_db_key: String = "PLR-%s" % player_name
@@ -122,7 +125,7 @@ func _on_jam_connect_server_pre_ready():
 
 func _on_jam_connect_local_player_joining():
 	$HUD.visible = true
-	$HUD/TouchControl.visible = OS.has_feature("mobile") or OS.has_feature("web_android") or OS.has_feature("web_ios")
+
 	
 func _on_jam_connect_local_player_joined(pinfo: Dictionary):
 	if OS.is_debug_build():
