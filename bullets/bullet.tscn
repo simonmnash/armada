@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cdou0aman2tdx"]
 
-[ext_resource type="Texture2D" uid="uid://dv88bqqwfh0de" path="res://godot.svg" id="1_lunm3"]
 [ext_resource type="Script" path="res://bullets/bullet.gd" id="1_ud32b"]
+[ext_resource type="Texture2D" uid="uid://b1y0up2bj67wx" path="res://spaceships/lasershot.png" id="2_8t7gi"]
 [ext_resource type="Script" path="res://addons/jam_launch/core/JamSync.gd" id="3_mshph"]
 
 [node name="Bullet" type="RigidBody2D"]
@@ -10,7 +10,7 @@ script = ExtResource("1_ud32b")
 
 [node name="Shot" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_lunm3")
+texture = ExtResource("2_8t7gi")
 
 [node name="JamSync" type="Node" parent="."]
 script = ExtResource("3_mshph")

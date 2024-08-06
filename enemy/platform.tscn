@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cs455x315f2xa"]
+[gd_scene load_steps=5 format=3 uid="uid://cs455x315f2xa"]
 
 [ext_resource type="PackedScene" uid="uid://je4c233yym4y" path="res://enemy/enemy.tscn" id="1_guj4f"]
+[ext_resource type="Texture2D" uid="uid://bfv7xhtayoxlm" path="res://spaceships/enemy.png" id="2_fi3ld"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vshu"]
 size = Vector2(83, 81)
@@ -10,6 +11,9 @@ size = Vector2(67, 65)
 
 [node name="Platform" instance=ExtResource("1_guj4f")]
 
+[node name="Sprite2D" parent="." index="0"]
+visible = false
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2(-1.5, 1.5)
 shape = SubResource("RectangleShape2D_5vshu")
@@ -17,3 +21,8 @@ shape = SubResource("RectangleShape2D_5vshu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_1fu7l")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." index="6"]
+rotation = 3.14159
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_fi3ld")

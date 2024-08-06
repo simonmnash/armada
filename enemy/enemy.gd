@@ -23,6 +23,7 @@ var health = 2
 
 func _ready():
 	$Timer.wait_time += rng.randf_range(-1.0, 3.0)
+	linear_velocity +- Vector2(0, rng.randf_range(-500, 1000))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

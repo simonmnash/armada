@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcs7ofskkbawj"
-path="res://.godot/imported/bluebird128.png-1aba0641aefed9a073de95936f962959.ctex"
+uid="uid://bgq1yof30gmps"
+path="res://.godot/imported/hammerhead.png-70e48095413891d8ae7c35426d99e8e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://spaceships/bluebird128.png"
-dest_files=["res://.godot/imported/bluebird128.png-1aba0641aefed9a073de95936f962959.ctex"]
+source_file="res://spaceships/hammerhead.png"
+dest_files=["res://.godot/imported/hammerhead.png-70e48095413891d8ae7c35426d99e8e2.ctex"]
 
 [params]
 

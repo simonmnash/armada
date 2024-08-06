@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcs7ofskkbawj"
-path="res://.godot/imported/bluebird128.png-1aba0641aefed9a073de95936f962959.ctex"
+uid="uid://bfv7xhtayoxlm"
+path="res://.godot/imported/enemy.png-4003e917744218bad24f291b47182b76.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://spaceships/bluebird128.png"
-dest_files=["res://.godot/imported/bluebird128.png-1aba0641aefed9a073de95936f962959.ctex"]
+source_file="res://spaceships/enemy.png"
+dest_files=["res://.godot/imported/enemy.png-4003e917744218bad24f291b47182b76.ctex"]
 
 [params]
 

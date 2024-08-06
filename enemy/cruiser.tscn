@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://je4c233yym4y" path="res://enemy/enemy.tscn" id="1_xrq2f"]
 [ext_resource type="PackedScene" uid="uid://befl47fsx46xl" path="res://bullets/cruisershot.tscn" id="2_i050n"]
-[ext_resource type="Texture2D" uid="uid://dv88bqqwfh0de" path="res://godot.svg" id="3_dsf58"]
+[ext_resource type="Texture2D" uid="uid://bgq1yof30gmps" path="res://spaceships/hammerhead.png" id="3_e0ng0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7yi74"]
 size = Vector2(273, 525)
@@ -28,5 +28,4 @@ position = Vector2(1, -15)
 shape = SubResource("RectangleShape2D_1a0wp")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." index="6"]
-scale = Vector2(2, 4)
-texture = ExtResource("3_dsf58")
+texture = ExtResource("3_e0ng0")

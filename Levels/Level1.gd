@@ -5,7 +5,8 @@ var started = false
 const eg_scene = preload("res://enemy/platform.tscn")
 const cruiser_scene = preload("res://enemy/cruiser.tscn")
 var rng = RandomNumberGenerator.new()
-func spawn_player(pid: int, nametag: String, player_data):
+
+func spawn_player(pid: int, nametag: String):
 	var p: CharacterBody2D = character_scn.instantiate()
 	p.pid = pid
 	p.nametag = nametag
@@ -15,7 +16,6 @@ func spawn_player(pid: int, nametag: String, player_data):
 		p.position = $Players.get_children().pick_random().position + Vector2(randf_range(-200.0, 200.0), 400.0)
 	p.name = str(pid)
 	$Players.add_child(p, true)
-	p.set_player_data(player_data)
 
 func remove_player(pid):
 	var p = $Players.get_node(str(pid))

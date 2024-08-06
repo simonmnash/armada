@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bf62lct1fdycg"]
 
 [ext_resource type="PackedScene" uid="uid://cdou0aman2tdx" path="res://bullets/bullet.tscn" id="1_yarqr"]
-[ext_resource type="Texture2D" uid="uid://ip686mvl2tjb" path="res://spaceships/simplemissle.png" id="2_8b4fo"]
+[ext_resource type="Texture2D" uid="uid://77dqynfhiu5w" path="res://spaceships/simplemissle2.png" id="2_5khte"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2q3ea"]
 size = Vector2(36, 17)
@@ -32,4 +32,4 @@ shape = SubResource("RectangleShape2D_vo2sw")
 [node name="Sprite2D" type="Sprite2D" parent="." index="4"]
 position = Vector2(-0.75, 0)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_8b4fo")
+texture = ExtResource("2_5khte")
