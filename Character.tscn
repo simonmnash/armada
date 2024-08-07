@@ -31,11 +31,20 @@ position_smoothing_speed = 8.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 
-[node name="Rules" type="Label" parent="Camera2D/CanvasLayer"]
-offset_left = 26.0
-offset_top = 676.0
-offset_right = 1273.0
-offset_bottom = 704.0
+[node name="MarginContainer" type="MarginContainer" parent="Camera2D/CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -168.0
+offset_top = -40.0
+offset_right = 168.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Rules" type="Label" parent="Camera2D/CanvasLayer/MarginContainer"]
+layout_mode = 2
 theme = ExtResource("3_sv27p")
 text = "Arrow Keys to Move - Space to Shoot"
 horizontal_alignment = 1
